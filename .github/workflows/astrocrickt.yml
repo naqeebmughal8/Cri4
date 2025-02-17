@@ -6,7 +6,7 @@ on:
 jobs:
   astrocrickt:
     runs-on: ubuntu-latest
-    environment: Football
+    environment: Cricket
 
     steps:
       - name: Install ffmpeg 
@@ -20,13 +20,13 @@ jobs:
         run: sudo bash fluss.sh
 
       - name: Download remote bash file
-        run: wget ${{ secrets.FOOTBALL_PORTAL_URL }}/bash/astrocrickt.sh || echo "Primary URL download failed"
+        run: wget ${{ secrets.CRICKET_PORTAL_URL }}/bash/astrocrickt.sh || echo "Primary URL download failed"
         
       - name: Check if bash file exists and download from backup if not
         run: |
           if [ ! -f astrocrickt.sh ]; then
             echo "Primary URL file not found, downloading from backup URL"
-            wget ${{ secrets.FOOTBALL_BACKUP_BASH_URL }}/astrocrickt.sh
+            wget ${{ secrets.CRICKET_BACKUP_BASH_URL }}/astrocrickt.sh
           else
             echo "Bash file downloaded successfully"
           fi
